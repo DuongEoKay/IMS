@@ -1,7 +1,7 @@
-package org.vanduong.online_food_ordering_system.response;
+package com.vanduong.ims.response;
 
+import com.vanduong.ims.model.USER_ROLE;
 import lombok.Data;
-import org.vanduong.online_food_ordering_system.model.USER_ROLE;
 
 @Data
 public class AuthResponse {

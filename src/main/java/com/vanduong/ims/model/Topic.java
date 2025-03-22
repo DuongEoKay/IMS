@@ -2,11 +2,9 @@ package com.vanduong.ims.model;
 
 
 import java.sql.Date;
+import java.util.UUID;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,9 +16,8 @@ import lombok.NoArgsConstructor;
 public class Topic {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private UUID id;
 
-    private String topicId;
     
     private String topicName;
     
@@ -37,10 +34,15 @@ public class Topic {
     private Date endDate;
     
     private String approvalStatus;
-    
-    private long majorId;
-    
-    private long companyId;
+
+
+    @ManyToOne
+    @JoinColumn(name = "major_id")
+    private Major majorId;
+
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    private Company companyId;
    
     
 }

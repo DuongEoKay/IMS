@@ -3,13 +3,13 @@ package com.vanduong.ims.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.scheduling.annotation.Scheduled;
+
+import java.util.UUID;
 
 @Entity
 @Data
@@ -18,27 +18,36 @@ import lombok.NoArgsConstructor;
 public class StudentTopic {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private UUID id;
 
-    private String studentTopicId;
-    
-    private long studentId;
-    
-    private long topicId;
+
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private Student studentId;
+
+    @ManyToOne
+    @JoinColumn(name = "topic_id")
+    private Topic topicId;
     
     private boolean isApproved;
     
     private boolean isScored;
     
     private boolean isCompleted;
-    
-    private long assignedTeacherId;
+
+
+    @ManyToOne
+    @JoinColumn(name = "assigned_teacher_id")
+    private Teacher assignedTeacherId;
     
     private float score;
     
     private boolean isScheduled;
-    
-    private long scheduledId;
+
+
+    @ManyToOne
+    @JoinColumn(name = "scheduled_id")
+    private InterviewSchedule scheduledId;
     
     
 

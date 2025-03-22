@@ -3,13 +3,12 @@ package com.vanduong.ims.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.UUID;
 
 @Entity
 @Data
@@ -17,10 +16,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Teacher {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @OneToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
 
-    private long majorId;
+    private UUID majorId;
 
     private String teacherId;
     
@@ -31,6 +31,5 @@ public class Teacher {
     private String phone;
     
     private String teacherType;
-    
-    
+
 }

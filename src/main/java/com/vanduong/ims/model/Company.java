@@ -3,10 +3,7 @@ package com.vanduong.ims.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,8 +14,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Company {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @OneToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
     
     private String companyId;
 
@@ -31,7 +29,5 @@ public class Company {
     private String address;
     
     private float rating;
-    
-    
 
 }

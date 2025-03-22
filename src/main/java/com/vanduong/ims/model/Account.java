@@ -14,20 +14,19 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AcademicBackground {
+public class Account{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @OneToOne
-    @JoinColumn(name = "student_id")
-    private Student studentId;
 
-    @OneToOne
-    @JoinColumn(name = "subject_id")
-    private Subject subjectId;
-    
-    private float gpa;
+    private String username;
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String password;
+
+
+    private USER_ROLE role=USER_ROLE.ROLE_STUDENT;
 
 
 }

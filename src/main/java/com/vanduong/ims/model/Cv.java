@@ -1,13 +1,12 @@
 package com.vanduong.ims.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.UUID;
 
 @Entity
 @Data
@@ -16,9 +15,11 @@ import lombok.NoArgsConstructor;
 public class Cv {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private UUID id;
 
-    private long StudentId;
+    @OneToOne
+    @JoinColumn(name = "student_id")
+    private Student studentId;
     
     private String cvSource;
 }

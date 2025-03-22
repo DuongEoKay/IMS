@@ -2,6 +2,7 @@ package com.vanduong.ims.model;
 
 
 import java.sql.Date;
+import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -20,7 +21,7 @@ import lombok.NoArgsConstructor;
 public class InterviewSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private UUID id;
 
     private String interviewScheduleId;
     

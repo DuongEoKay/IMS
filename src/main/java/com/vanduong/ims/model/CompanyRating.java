@@ -1,8 +1,6 @@
 package com.vanduong.ims.model;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,20 +12,17 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AcademicBackground {
+public class CompanyRating {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-
-    @OneToOne
-    @JoinColumn(name = "student_id")
-    private Student studentId;
-
-    @OneToOne
-    @JoinColumn(name = "subject_id")
-    private Subject subjectId;
     
-    private float gpa;
+    private int rateStar;
 
-
+    @ManyToOne
+    @JoinColumn(name = "student_topic_id")
+    private StudentTopic studentTopicId;
+    
+    
+    
 }

@@ -1,24 +1,25 @@
 package com.vanduong.ims.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.UUID;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Student extends User{
+public class Student{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    
-    private long majorId;
+    @OneToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
+
+    @Column(name = "major_id")
+    private UUID majorId;
 
     private String studenId;
 
@@ -42,14 +43,6 @@ public class Student extends User{
     private String academicYear;
     
     private Boolean isQualified;
-    
-    
-    
-    
-
-
-
-
 
 
 
